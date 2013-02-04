@@ -1,0 +1,16 @@
+<p>Dear <%= @resource.first_name %>!</p>
+
+
+
+<p>Thank you very much for submitting your application to The Edinburgh Apprentice 2013. We are glad to invite you to the first round of the competition - an online numerical test, which will consist of x questions and you will have a time limit of x minutes.</p>
+  <p>Please click on the link below and finish the test by the midnight of Friday 8th Feb to progress into the next round. Please have your calculator, a pen and some rough paper ready. The results will be announced at our Launch Party on Monday 11th Feb at Lulu so make sure you join us at the party. Good luck!</p>
+
+<br>
+
+<p>Regards,     <br>
+The Edinburgh Apprentice 2013 Project Team
+</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

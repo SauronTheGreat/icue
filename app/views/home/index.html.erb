@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+
+      $('.test_link').click(function(){
+           alert("Your test Will start now and you will have 30 mins to complete it. Best of Luck !")
+      })  ;
+
+
+  })                 ;
+</script>
+<h1>Welcome to Edinburgh Apprentice 2013 !</h1>
+<p> Please Write the Instructions for the players here</p>
+<% if current_user.admin %>
+
+    <%= link_to "See the Scores till now", user_tests_path %>
+
+
+<% else %>
+    <% if current_user.test_taken? %>
+        <h3>You have taken the test and Result will be emailed. Thanks</h3>
+
+    <% else %>
+        <%= link_to "Take the test", new_user_test_path,:class => "test_link" %>
+
+    <% end %>
+<% end %>

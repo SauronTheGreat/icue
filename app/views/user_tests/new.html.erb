@@ -1,0 +1,37 @@
+<script type="text/javascript">
+
+
+
+    $(document).ready(function(){
+
+
+
+
+
+        var newYear = new Date('<%= current_user.test_started_at.to_i+1800 %>'*1000);
+       // var newYear = new Date('<%= Time.now.to_i+10 %>'*1000);
+
+        //newYear = new Date(newYear.getFullYear() + 1, 1 - 1, 1);
+        $('#defaultCountdown').countdown({until: newYear,format:'MS',onExpiry:expire});
+
+        function expire(){
+            alert("Time is Up ! Thanks for taking the test");
+            $("#test_form").submit();
+
+        }
+        $('#slider-id').codaSlider();
+    }   );
+
+
+</script>
+
+
+<%- model_class = UserTest -%>
+<div class="page-header">
+  <h3>Time Remaining:</h3>
+  <div id="defaultCountdown" style="width: 200px;height: 50px;padding-top: 10px;">
+
+  </div>
+
+</div>
+<%= render :partial => 'form' %>

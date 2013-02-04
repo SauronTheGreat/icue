@@ -1,0 +1,39 @@
+<%= form_tag({:action => 'create'}, {:class => 'form-horizontal', :id => "test_form"}) do %>
+
+    <div class="coda-slider" id="slider-id">
+
+      <%= hidden_field_tag :user_id, current_user.id %>
+      <% @questions.each_with_index do |question, index| %>
+
+          <div>
+            <h2 class="title"><%= index+1 %></h2>
+            <div class="control-group">
+              <%= label_tag index+1, nil, :class => 'control-label' %>
+              <div class="controls">
+                <%= label_tag question.name, nil, :class => 'control-label',:style=>'width:200px' %>
+              </div>
+            </div>
+
+            <% question.answers.each do |answer| %>
+                <div class="control-group">
+                  <%= label_tag answer.name, nil, :class => 'control-label' %>
+                  <div class="controls">
+                    <%= radio_button_tag question.id, answer.id %>
+
+                  </div>
+
+                </div>
+            <% end %>
+            <hr>
+          </div>
+
+
+      <% end %>
+      </div>
+
+      <div class="form-actions">
+        <%= submit_tag 'submit', :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    user_tests_path, :class => 'btn' %>
+      </div>
+<% end %>

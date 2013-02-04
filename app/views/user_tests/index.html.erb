@@ -1,0 +1,31 @@
+<%- model_class = UserTest -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:rank) %></th>
+      <th><%= model_class.human_attribute_name(:candidate) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:score) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.reverse.each_with_index do |user_test,index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= user_test.first_name+" "+ user_test.last_name %></td>
+        <td><%= user_test.email %></td>
+
+        <td><%= user_test.score%></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_test_path,
+            :class => 'btn btn-primary' %>

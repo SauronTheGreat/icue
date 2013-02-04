@@ -1,0 +1,49 @@
+<%= nested_form_for @question, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label 'Question', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :name, :class => 'text_area',:rows=>5 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :category_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }) %>
+    </div>
+  </div>
+    <hr>
+
+    <%= f.fields_for :answers,:html=>{:class=>'form-horizontal'} do |an| %>
+
+        <div class="control-group">
+          <%= an.label :name,:class => 'control-label' %>
+          <div class="controls">
+            <%= an.text_field :name %>
+            </div>
+          </div>
+
+        <div class="control-group">
+            <%= an.label :correct,:class => 'control-label' %>
+          <div class="controls">
+
+            <%= an.check_box :correct %>
+            </div>
+          </div>
+            <%= an.link_to_remove "Remove this Answer",:class=>'btn btn-danger' %>
+        <hr>
+
+    <% end %>
+
+
+
+
+
+    <%= f.link_to_add "Add a Answer", :answers,:class=>'btn' %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                questions_path, :class => 'btn' %>
+
+  </div>
+
+<% end %>
