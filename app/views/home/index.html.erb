@@ -8,8 +8,8 @@
 
   })                 ;
 </script>
-<h1>Welcome to Edinburgh Apprentice 2013 !</h1>
-<p> Please Write the Instructions for the players here</p>
+
+
 <% if current_user.admin %>
 
     <%= link_to "See the Scores till now", user_tests_path %>
@@ -17,9 +17,38 @@
 
 <% else %>
     <% if current_user.test_taken? %>
-        <h3>You have taken the test and Result will be emailed. Thanks</h3>
+        <h2>Welcome to Edinburgh Apprentice 2013 !</h2>
+
+        <h4>You have taken the test and Result will be emailed. Thanks</h4>
 
     <% else %>
+        <h2>Welcome to Edinburgh Apprentice 2013 !</h2>
+
+        <h3>Dear <%= current_user.first_name %>,</h3>
+
+        <p>Thank you for registering to take the electronic round of The Edinburgh Apprentice 2013. Please read the following instructions before proceeding:</p>
+
+        <ol>
+          <li> Don't panic! This is just an exercise to get your brains into business mode, we aren't going to mark you harshly we just want to get a rough idea of everyone's abilities.</li>
+
+          <li> Ensure you have 30 minutes of uninterrupted time ahead of you to complete the test along with a calculator, a pen and some rough paper.</li>
+
+          <li> Complete the test BEFORE MIDNIGHT FRIDAY 8TH FEBRUARY </li>
+
+          <li> After completing the test, sit tight and await details of our Launch Party where successful applicants will be put into their 2nd round teams and allocated their selling slots.</li>
+        </ol>
+
+        <p>Good luck!             </p>
+
+        <p>
+          The Edinburgh Apprentice Project Team
+        </p>
+        <p>
+          (If you have any issues or queries please email apprentice@icue.co.uk)
+
+
+        </p>
+
         <%= link_to "Take the test", new_user_test_path,:class => "test_link" %>
 
     <% end %>
