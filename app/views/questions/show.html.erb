@@ -5,9 +5,9 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @question.name %></dd>
+  <dd><%= raw @question.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
-  <dd><%= @question.category_id %></dd>
+  <dd><%= Category.find(@question.category_id).name %></dd>
 </dl>
 
 <div class="form-actions">
