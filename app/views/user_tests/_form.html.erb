@@ -8,9 +8,9 @@
           <div>
             <h2 class="title"><%= index+1 %></h2>
             <div class="control-group">
-              <%= label_tag index+1, nil, :class => 'control-label' %>
+              <%#= label_tag index+1, nil, :class => 'control-label' %>
               <div class="controls">
-                <%= label_tag question.name, nil, :class => 'control-label',:style=>'width:200px' %>
+                <%=  raw question.name %>
               </div>
             </div>
 

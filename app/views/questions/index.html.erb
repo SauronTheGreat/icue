@@ -1,6 +1,7 @@
 <%- model_class = Question -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+
 </div>
 <table class="table table-striped">
   <thead>
@@ -16,7 +17,8 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= link_to question.id, question_path(question) %></td>
-        <td><%= question.name %></td>
+
+        <td><%= raw question.name %></td>
         <td><%= question.category_id %></td>
         <td><%=l question.created_at %></td>
         <td>
