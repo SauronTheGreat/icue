@@ -3,6 +3,11 @@ class UserTestsController < ApplicationController
   # GET /user_tests.json
   before_filter :authenticate_user!
 
+  def test_taken
+    if current_user.test_taken?
+      redirect_to root_path
+          end
+  end
   def index
 
     @users=User.order(:score)
@@ -28,6 +33,10 @@ class UserTestsController < ApplicationController
   # GET /user_tests/new
   # GET /user_tests/new.json
   def new
+    if current_user.test_taken?
+      redirect_to root_path
+      return
+    end
     @user_test = UserTest.new
     if current_user.test_started_at==nil
       current_user.test_started_at=Time.now
