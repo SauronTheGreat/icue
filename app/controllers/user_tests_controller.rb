@@ -9,7 +9,10 @@ class UserTestsController < ApplicationController
           end
   end
   def index
-
+    if !current_user.admin?
+      redirect_to root_path
+      return
+    end
     @users=User.order(:score)
 
 
