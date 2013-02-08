@@ -1,7 +1,14 @@
 class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!,:check_user
+
+  def check_user
+    if !current_user.admin?
+      redirect_to root_path ,:alert=>"This is an unrestricted URL "
+    end
+
+  end
   def index
     @categories = Category.all
 
